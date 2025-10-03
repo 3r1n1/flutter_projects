@@ -36,19 +36,45 @@ class _ForgotState extends State<Forgot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Forgot Password")),
+      appBar: AppBar(title: const Text("Ndërro fjalëkalimin", 
+      style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Color.fromRGBO(21, 195, 169, 1),
+          ),)),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             TextField(
               controller: email,
-              decoration: const InputDecoration(hintText: 'Enter your email'),
+              decoration: const InputDecoration(hintText: 'Shëno email-in'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: reset,
-              child: const Text("Send email"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(
+                  21,
+                  195,
+                  169,
+                  1,
+                ), // button color
+                foregroundColor: Colors.white, // text (and icon) color
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 4, // shadow depth
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              child: Text("Dërgo Email-in"),
             ),
           ],
         ),
