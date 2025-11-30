@@ -5,6 +5,7 @@ import 'package:test_app/wrapper.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart'; // for formatting Date of Birth
 import 'package:cloud_firestore/cloud_firestore.dart'; // add this
+import 'main_navigation.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -43,7 +44,8 @@ class _SignupState extends State<Signup> {
               "createdAt": FieldValue.serverTimestamp(),
             });
 
-        Get.offAll(() => const Wrapper());
+        Get.offAll(() => const MainNavigation());
+
       } catch (e) {
         print("Signup error: $e");
         Get.snackbar("Error", e.toString());

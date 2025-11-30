@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
 import 'package:test_app/forgot.dart';
+import 'package:test_app/homepage.dart';
+import 'package:test_app/main_navigation.dart';
 import 'package:test_app/signup.dart';
 
 class Login extends StatefulWidget {
@@ -18,21 +20,30 @@ class _LoginState extends State<Login> {
   TextEditingController password = TextEditingController();
   String? errorMessage;
 
-  signIn() async {
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email.text,
-        password: password.text,
-      );
-      setState(() {
-        errorMessage = null; // clear error if login succeeds
-      });
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        errorMessage = "Email ose fjalëkalim i pasaktë"; // your custom message
-      });
-    }
+ signIn() async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email.text.trim(),
+      password: password.text.trim(),
+    );
+
+    setState(() {
+      errorMessage = null;
+    });
+
+  
+     Navigator.pushReplacement(
+       context,
+       MaterialPageRoute(builder: (context) => const MainNavigation()),
+     );
+
+  } on FirebaseAuthException catch (e) {
+    setState(() {
+      errorMessage = "Email ose fjalëkalim i pasaktë";
+    });
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +94,7 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-          
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: (() => signIn()),
               style: ElevatedButton.styleFrom(
@@ -109,7 +120,7 @@ class _LoginState extends State<Login> {
               ),
               child: Text("Kyçu"),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 30),
              Row(
   mainAxisAlignment: MainAxisAlignment.center,
   children: [

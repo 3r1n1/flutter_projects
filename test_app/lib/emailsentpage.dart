@@ -17,7 +17,7 @@ class EmailSentPage extends StatelessWidget {
             const Icon(Icons.email, size: 80, color: Colors.blue),
             const SizedBox(height: 20),
             const Text(
-              "A password reset email has been sent.\nPlease check your inbox and spam folder.",
+              "Një email për rivendosjen e fjalëkalimit është dërguar.\nJu lutemi kontrolloni kutinë tuaj hyrëse dhe dosjen e spamit.",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 18),
             ),
@@ -29,7 +29,31 @@ class EmailSentPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Login()),
                 );
               },
-              child: const Text("Continue to Login"),
+               style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromRGBO(
+                  21,
+                  195,
+                  169,
+                  1,
+                ), // button color
+                foregroundColor: Colors.white, // text (and icon) color
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 16,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 4, // shadow depth
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+             
+            
+              child: const Text("Vazhdo të kyçesh"
+              ),
             ),
             const SizedBox(height: 10),
             TextButton(
@@ -39,7 +63,7 @@ class EmailSentPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Forgot()),
                 );
               },
-              child: const Text("Change Email"),
+              child: const Text("Ndërro Email-in"),
             ),
           ],
         ),
